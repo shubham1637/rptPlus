@@ -17,3 +17,21 @@ cpp_codonSplitCpp <- function(cDNA) {
     .Call('_rptPlus_cpp_codonSplitCpp', PACKAGE = 'rptPlus', cDNA)
 }
 
+#' @export
+initializeMatrix <- function(initVal, ROW_SIZE, COL_SIZE) {
+    .Call('_rptPlus_initializeMatrix', PACKAGE = 'rptPlus', initVal, ROW_SIZE, COL_SIZE)
+}
+
+#' @export
+getseqSimMat <- function(seq1, seq2, Match, MisMatch, s) {
+    invisible(.Call('_rptPlus_getseqSimMat', PACKAGE = 'rptPlus', seq1, seq2, Match, MisMatch, s))
+}
+
+meanC <- function(x, s) {
+    .Call('_rptPlus_meanC', PACKAGE = 'rptPlus', x, s)
+}
+
+TestMatrixParsing <- function() {
+    .Call('_rptPlus_TestMatrixParsing', PACKAGE = 'rptPlus')
+}
+

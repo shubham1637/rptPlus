@@ -16,9 +16,62 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// initializeMatrix
+NumericMatrix initializeMatrix(float initVal, int ROW_SIZE, int COL_SIZE);
+RcppExport SEXP _rptPlus_initializeMatrix(SEXP initValSEXP, SEXP ROW_SIZESEXP, SEXP COL_SIZESEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< float >::type initVal(initValSEXP);
+    Rcpp::traits::input_parameter< int >::type ROW_SIZE(ROW_SIZESEXP);
+    Rcpp::traits::input_parameter< int >::type COL_SIZE(COL_SIZESEXP);
+    rcpp_result_gen = Rcpp::wrap(initializeMatrix(initVal, ROW_SIZE, COL_SIZE));
+    return rcpp_result_gen;
+END_RCPP
+}
+// getseqSimMat
+void getseqSimMat(std::string seq1, std::string seq2, float Match, float MisMatch, NumericMatrix s);
+RcppExport SEXP _rptPlus_getseqSimMat(SEXP seq1SEXP, SEXP seq2SEXP, SEXP MatchSEXP, SEXP MisMatchSEXP, SEXP sSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type seq1(seq1SEXP);
+    Rcpp::traits::input_parameter< std::string >::type seq2(seq2SEXP);
+    Rcpp::traits::input_parameter< float >::type Match(MatchSEXP);
+    Rcpp::traits::input_parameter< float >::type MisMatch(MisMatchSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type s(sSEXP);
+    getseqSimMat(seq1, seq2, Match, MisMatch, s);
+    return R_NilValue;
+END_RCPP
+}
+// meanC
+double meanC(NumericVector x, NumericMatrix s);
+RcppExport SEXP _rptPlus_meanC(SEXP xSEXP, SEXP sSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type s(sSEXP);
+    rcpp_result_gen = Rcpp::wrap(meanC(x, s));
+    return rcpp_result_gen;
+END_RCPP
+}
+// TestMatrixParsing
+NumericMatrix TestMatrixParsing();
+RcppExport SEXP _rptPlus_TestMatrixParsing() {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    rcpp_result_gen = Rcpp::wrap(TestMatrixParsing());
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_rptPlus_cpp_codonSplitCpp", (DL_FUNC) &_rptPlus_cpp_codonSplitCpp, 1},
+    {"_rptPlus_initializeMatrix", (DL_FUNC) &_rptPlus_initializeMatrix, 3},
+    {"_rptPlus_getseqSimMat", (DL_FUNC) &_rptPlus_getseqSimMat, 5},
+    {"_rptPlus_meanC", (DL_FUNC) &_rptPlus_meanC, 2},
+    {"_rptPlus_TestMatrixParsing", (DL_FUNC) &_rptPlus_TestMatrixParsing, 0},
     {NULL, NULL, 0}
 };
 
